@@ -130,8 +130,8 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
+function getLastDigit(value) {
+  return value % 10;
   // return value.toString().split('').reverse()[0];
 }
 
@@ -230,11 +230,8 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(value, def) {
-  if (typeof String(value) === typeof 'string') {
-    return value;
-  }
-  return def;
+function toNumber(/* value, def */) {
+  throw new Error('Not implemented');
 }
 
 /**
@@ -417,7 +414,7 @@ function toPrecision(number, precision) {
  * Number(-5)    => -5
  */
 function getNumberValue(number) {
-  number.valueOf();
+  return number.valueOf();
 }
 
 /**
@@ -436,7 +433,7 @@ function getNumberValue(number) {
  * '5'      => false
  */
 function isNumber(number) {
-  return Number.isNumber(number);
+  return Number.isFinite(number);
 }
 
 /**
@@ -450,8 +447,8 @@ function isNumber(number) {
  * 5.1  => false
  * '5'  => false
  */
-function isInteger(/* number */) {
-  throw new Error('Not implemented');
+function isInteger(number) {
+  return Number.isInteger(number);
 }
 
 /**
@@ -464,8 +461,8 @@ function isInteger(/* number */) {
  * '4.567abcdefgh' => 4.567
  * 'abcdefgh'      => NaN
  */
-function getFloatOnString(/* str */) {
-  throw new Error('Not implemented');
+function getFloatOnString(str) {
+  return Number.parseFloat(str);
 }
 
 /**
