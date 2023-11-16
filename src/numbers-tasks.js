@@ -51,11 +51,6 @@ function getCircleCircumference(radius) {
  */
 function getAverage(/* value1, value2 */) {
   throw new Error('Not implemented');
-  // let num1 = value1;
-  // let num2 = value2;
-  // if (num1 === Infinity) num1 = Number.MAX_VALUE;
-  // if (num2 === Infinity) num2 = Number.MAX_VALUE;
-  // return (num1 + num2) / 2;
 }
 
 /**
@@ -184,8 +179,16 @@ function getParallelepipedDiagonal(a, b, c) {
  *   1678, 2  => 1700
  *   1678, 3  => 2000
  */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  let arrOfNum = Array.from(String(num)).reverse();
+  for (let i = 0; i < pow; i += 1) {
+    if (+arrOfNum[i] >= 5) {
+      arrOfNum[i + 1] = +arrOfNum[i + 1] + 1;
+    }
+    arrOfNum[i] = 0;
+  }
+  arrOfNum = arrOfNum.reverse().join('');
+  return arrOfNum;
 }
 
 /**
@@ -205,8 +208,12 @@ function roundToPowerOfTen(/* num, pow */) {
  *   16 => false
  *   17 => true
  */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function isPrime(n) {
+  let res = true;
+  for (let i = 2; i < n; i += 1) {
+    if (n % i === 0) res = false;
+  }
+  return res;
 }
 
 /**
@@ -224,8 +231,9 @@ function isPrime(/* n */) {
  *   toNumber(42, 0) => 42
  *   toNumber(new Number(42), 0) => 42
  */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+function toNumber(value, def) {
+  if (!Number.isNaN(+value)) return +value;
+  return def;
 }
 
 /**
@@ -562,8 +570,8 @@ function getIntegerPartNumber(number) {
  * 1, 2, 3       => 6
  * 0.1, 0.2, 0.3 => 0.6
  */
-function getSumOfNumbers(/* x1, x2, x3 */) {
-  throw new Error('Not implemented');
+function getSumOfNumbers(x1, x2, x3) {
+  return (x1 + x2 + x3).toFixed(1);
 }
 
 /**
@@ -629,10 +637,9 @@ function getHypotenuse(a, b) {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(/* number */) {
-  throw new Error('Not implemented');
-  // const res = Math.abs(Math.ceil(number / 2));
-  // return res;
+function getCountOfOddNumbers(number) {
+  const res = Math.round(Math.abs(number / 2));
+  return res;
 }
 
 module.exports = {
